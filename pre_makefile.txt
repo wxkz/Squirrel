@@ -1,0 +1,5 @@
+# Libs
+libcurl4-openssl-dev
+
+# Compile
+gcc main.c -lcurl -o out
