@@ -4,26 +4,46 @@
 #include<curl/curl.h>
 
 // Test --------------------------
-
 int _teste(){
   printf("teste");
 };
 
-// List --------------------------
 
-int _list(char **search){
-	// rep_list = "Some archive";
-	// for(int i = 0; i < rep_list; i++){
-	// 	for(packet in rep){
-	// 		if(strstr(packet, search) == 0){
-	// 			printf("%s\n", packet);
-	// 		}
-	// 	}
-	// }
+// List --------------------------
+void _listPackets(char *search){
+  // Download newsts packet list
+  //system("rm packets.txt")
+  //system("wget https://github.com/wxkz/Squirrel/packets.txt");
+
+  // Search packet
+  FILE *stream;
+	char *line = NULL;
+	size_t len = 0;
+	ssize_t read;
+
+	stream = fopen("packets.txt", "r");
+	if (stream == NULL)
+		exit(EXIT_FAILURE);
+
+	while ((read = getline(&line, &len, stream)) != -1) {
+    if(strstr(line, search) != NULL){
+      printf("%s", line);
+    }
+	}
+
+	free(line);
+	fclose(stream);
+	exit(EXIT_SUCCESS);
+
 };
 
-// Verify --------------------------
+// List dependencies ---------------
+void _listDependencies(){
 
+};
+
+
+// Verify --------------------------
 int _dependecies(char **packet){
 	printf("You can skip verification with --force or --no-verify");
 };
@@ -40,7 +60,6 @@ int _exist(char **packet){
 };
 
 // Download --------------------------
-
 int _download(int argc, char **argv){
 	CURL *curl;
 	FILE *fp;
@@ -69,7 +88,6 @@ int _download(int argc, char **argv){
 // ######################################################################
 
 // Install --------------------------
-
 int _install(char **packet){
 	if(system("which spm")){
 		//_download("packet");
@@ -81,8 +99,8 @@ int _install(char **packet){
 	return 0;
 };
 
-// Remove --------------------------
 
+// Remove --------------------------
 int _remove(char **packet){
   if(system("which spm") == 0){
     _exist(packet);
@@ -97,7 +115,6 @@ int _remove(char **packet){
 
 
 // Update --------------------------
-
 int _update(){
 
 };

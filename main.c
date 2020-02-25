@@ -3,7 +3,7 @@
 #include "core.h"
 
 int main(int argc, char **argv){
-//	_teste();
+	_list(argv[2]);
 	if(argv[1] != NULL){
 		// First parameter
 		if(strcmp(argv[1], "-s") == 0 || strcmp(argv[1], "search") == 0){
@@ -18,7 +18,7 @@ int main(int argc, char **argv){
 		if(strcmp(argv[1], "-d") == 0 || strcmp(argv[1], "dependencies") == 0){
 			printf("dependencies");
 		}
-	
+
 
 		// Second parameter
 		if(argv[2] != NULL){
