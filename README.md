@@ -12,4 +12,3 @@
 * <b>squirrel -upg | upgrade</b><br>
 <br>
 <h4><b>By:</b> Marcelo Rodrigues Campos | wwwxkz </h4>
-* based on BananaPkg.
